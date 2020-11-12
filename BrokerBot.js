@@ -63,3 +63,5 @@ BrokerBot.run = function(){
   BrokerBot.sell()
   BrokerBot.show()
 }
+
+BrokerBot.Inits();
