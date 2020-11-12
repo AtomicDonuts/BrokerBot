@@ -33,14 +33,8 @@ BrokerBot.buy = function(){
   BrokerBot.valuefun()
   BrokerBot.maxbuyfun()
   for (var i = 0; i < BrokerBot.goodsById.length; i++) {
-    BrokerBot.goodsById[i].hidden = true
-    BrokerBot.minigame.updateGoodStyle(i)
-  }
-  for (var i = 0; i < BrokerBot.goodsById.length; i++) {
     if(BrokerBot.values[i] < BrokerBot.minthreshold && BrokerBot.goodsById[i].active){
       BrokerBot.minigame.buyGood(i,BrokerBot.maxbuy[i])
-      BrokerBot.goodsById[i].hidden = false
-      BrokerBot.minigame.updateGoodStyle(i)
     }
   }
 }
@@ -51,14 +45,21 @@ BrokerBot.sell = function(){
   for (var i = 0; i < BrokerBot.goodsById.length; i++) {
     if(BrokerBot.values[i] > BrokerBot.maxthreshold){
       BrokerBot.minigame.sellGood(i,BrokerBot.maxbuy[i])
-      BrokerBot.goodsById[i].hidden = true
-      BrokerBot.minigame.updateGoodStyle(i)
     }
+  }
+}
+
+BrokerBot.show = function(){
+  for (var i = 0; i < BrokerBot.goodsById.length; i++) {
+    if(Game.ObjectsById[5].minigame.goodsById[i].stock > 0){BrokerBot.goodsById[i].hidden = false}
+    else {BrokerBot.goodsById[i].hidden = true}
+    BrokerBot.minigame.updateGoodStyle(i)
+    BrokerBot.minigame.checkGraphScale()
   }
 }
 
 BrokerBot.run = function(){
   BrokerBot.buy()
   BrokerBot.sell()
-  BrokerBot.minigame.checkGraphScale()
+  BrokerBot.show()
 }
