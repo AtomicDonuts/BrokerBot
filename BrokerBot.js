@@ -72,8 +72,8 @@ BrokerBot.show = function(){
 }
 
 BrokerBot.run = function(){
-  if(!BrokerBot.minigame)  BrokerBot.minigame  = Game.ObjectsById[5].minigame
-  if(!BrokerBot.goodsById) BrokerBot.goodsById = Game.ObjectsById[5].minigame.goodsById
+  if(BrokerBot.minigame)  BrokerBot.minigame  = Game.ObjectsById[5].minigame
+  if(BrokerBot.goodsById) BrokerBot.goodsById = Game.ObjectsById[5].minigame.goodsById
   BrokerBot.buy()
   BrokerBot.sell()
   BrokerBot.show()
