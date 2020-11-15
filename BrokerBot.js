@@ -9,8 +9,20 @@ BrokerBot.values = []
 BrokerBot.maxbuy = []
 BrokerBot.Inits = function() {
   var proceed = false
-  if(BrokerBot.version == Game.version){ proceed = true}
-  if(proceed) {BrokerBot.starter = setInterval(BrokerBot.run,1000);}
+  if(BrokerBot.version == Game.version){
+    if (Game.ObjectsById[5].minigameLoaded) {
+      proceed = true
+    }
+    else {
+      Game.Notify("BrokerBot","Warning: Stock Market Minigame is not loaded",[1,33],100)
+    }
+  }
+  else {
+    Game.Notify("BrokerBot","Warning: BakingBot is last tested with "+"cookie clicker version " + BrokerBot.version,[1,33],100)
+  }
+  if(proceed) {
+    BrokerBot.starter = setInterval(BrokerBot.run,1000)
+  }
 }
 
 BrokerBot.stop = function(){
@@ -63,5 +75,3 @@ BrokerBot.run = function(){
   BrokerBot.sell()
   BrokerBot.show()
 }
-
-BrokerBot.Inits();
