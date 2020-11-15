@@ -11,7 +11,7 @@ BrokerBot.Inits = function() {
   if(BrokerBot.version == Game.version){
     if (Game.ObjectsById[5].level != 0) {
       BrokerBot.minigame  = Game.ObjectsById[5].minigame
-      BrokerBot.goodsById = BrokerBot.minigame.goodsById
+      BrokerBot.goodsById = Game.ObjectsById[5].minigame.goodsById
       proceed = true
     }
     else {
