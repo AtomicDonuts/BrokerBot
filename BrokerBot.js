@@ -9,7 +9,7 @@ BrokerBot.maxbuy = []
 BrokerBot.Inits = function() {
   var proceed = false
   if(BrokerBot.version == Game.version){
-    if (Game.ObjectsById[5].minigameLoaded) {
+    if (Game.ObjectsById[5].level != 0) {
       BrokerBot.minigame  = Game.ObjectsById[5].minigame
       BrokerBot.goodsById = BrokerBot.minigame.goodsById
       proceed = true
