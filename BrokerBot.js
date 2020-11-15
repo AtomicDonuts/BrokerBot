@@ -1,16 +1,17 @@
 var BrokerBot
 if(!BrokerBot) BrokerBot = {};
 BrokerBot.version  = 2.031
-BrokerBot.minigame = Game.ObjectsById[5].minigame
 BrokerBot.minthreshold = 5.00
 BrokerBot.maxthreshold = 105.00
-BrokerBot.goodsById = BrokerBot.minigame.goodsById
 BrokerBot.values = []
 BrokerBot.maxbuy = []
+
 BrokerBot.Inits = function() {
   var proceed = false
   if(BrokerBot.version == Game.version){
     if (Game.ObjectsById[5].minigameLoaded) {
+      BrokerBot.minigame  = Game.ObjectsById[5].minigame
+      BrokerBot.goodsById = BrokerBot.minigame.goodsById
       proceed = true
     }
     else {
@@ -75,3 +76,5 @@ BrokerBot.run = function(){
   BrokerBot.sell()
   BrokerBot.show()
 }
+
+BrokerBot.Inits();
