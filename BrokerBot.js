@@ -10,8 +10,6 @@ BrokerBot.Inits = function() {
   var proceed = false
   if(BrokerBot.version == Game.version){
     if (Game.ObjectsById[5].level != 0) {
-      BrokerBot.minigame  = Game.ObjectsById[5].minigame
-      BrokerBot.goodsById = Game.ObjectsById[5].minigame.goodsById
       proceed = true
     }
     else {
@@ -25,6 +23,7 @@ BrokerBot.Inits = function() {
     BrokerBot.starter = setInterval(BrokerBot.run,1000)
     Game.Notify("BrokerBot","BrokerBot is running",[1,33],100)
   }
+  Game.Win('Third-party')
 }
 
 BrokerBot.stop = function(){
@@ -73,6 +72,8 @@ BrokerBot.show = function(){
 }
 
 BrokerBot.run = function(){
+  if(!BrokerBot.minigame)  BrokerBot.minigame  = Game.ObjectsById[5].minigame
+  if(!BrokerBot.goodsById) BrokerBot.goodsById = Game.ObjectsById[5].minigame.goodsById
   BrokerBot.buy()
   BrokerBot.sell()
   BrokerBot.show()
