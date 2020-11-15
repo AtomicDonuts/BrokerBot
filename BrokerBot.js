@@ -42,11 +42,21 @@ BrokerBot.maxbuyfun = function(){
   }
 }
 
+BrokerBot.cangoodbuy = function(id) {
+  BrokerBot.overhead = 1+0.01*(20*Math.pow(0.95,BrokerBot.minigame.brokers))
+  var abbrev = BrokerBot.goodsById[id].val * Game.cookiesPsRawHighest * BrokerBot.maxbuy[id] * BrokerBot.overhead
+  if (Game.cookies < abbrev) {
+    return false
+  } else {
+    return true
+  }
+}
+
 BrokerBot.buy = function(){
   BrokerBot.valuefun()
   BrokerBot.maxbuyfun()
   for (var i = 0; i < BrokerBot.goodsById.length; i++) {
-    if(BrokerBot.values[i] < BrokerBot.minthreshold && BrokerBot.goodsById[i].active){
+    if(BrokerBot.values[i] < BrokerBot.minthreshold && BrokerBot.goodsById[i].active && BrokerBot.cangoodbuy(i) ){
       BrokerBot.minigame.buyGood(i,BrokerBot.maxbuy[i])
     }
   }
