@@ -23,6 +23,7 @@ BrokerBot.Inits = function() {
   }
   if(proceed) {
     BrokerBot.starter = setInterval(BrokerBot.run,1000)
+    Game.Notify("BrokerBot","BrokerBot is running",[1,33],100)
   }
 }
 
