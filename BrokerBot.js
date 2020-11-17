@@ -2,7 +2,7 @@ var BrokerBot
 if(!BrokerBot) BrokerBot = {};
 BrokerBot.version  = 2.031
 BrokerBot.minthreshold = 5.00
-BrokerBot.maxthreshold = 105.00
+BrokerBot.maxthreshold = 175.00
 BrokerBot.values = []
 BrokerBot.maxbuy = []
 
