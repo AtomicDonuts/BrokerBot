@@ -2,7 +2,7 @@ var BrokerBot
 if(!BrokerBot) BrokerBot = {};
 BrokerBot.version  = 2.031
 BrokerBot.minthreshold = 5.00
-BrokerBot.maxthreshold = 175.00
+BrokerBot.maxthreshold = 155.00
 BrokerBot.values = []
 BrokerBot.maxbuy = []
 
@@ -58,6 +58,7 @@ BrokerBot.buy = function(){
   for (var i = 0; i < BrokerBot.goodsById.length; i++) {
     if(BrokerBot.values[i] < BrokerBot.minthreshold && BrokerBot.goodsById[i].active && BrokerBot.cangoodbuy(i) ){
       BrokerBot.minigame.buyGood(i,BrokerBot.maxbuy[i])
+      Game.Notify("BrokerBot","I just bought you " + BrokerBot.minigame.getGoodMaxStock(BrokerBot.goodsById[i]) + " stocks of " + BrokerBot.goodsById[i].name + " for $" + Beautify(BrokerBot.goodsById[i].val,2) + " each",BrokerBot.goodsById[i].icon)
     }
   }
 }
@@ -68,6 +69,7 @@ BrokerBot.sell = function(){
   for (var i = 0; i < BrokerBot.goodsById.length; i++) {
     if(BrokerBot.values[i] > BrokerBot.maxthreshold){
       BrokerBot.minigame.sellGood(i,BrokerBot.maxbuy[i])
+      Game.Notify("BrokerBot","I just sold " + BrokerBot.minigame.getGoodMaxStock(BrokerBot.goodsById[i]) + " stocks of " + BrokerBot.goodsById[i].name + " for $" + Beautify(BrokerBot.goodsById[i].val,2) + " each",BrokerBot.goodsById[i].icon)
     }
   }
 }
